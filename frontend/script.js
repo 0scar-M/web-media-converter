@@ -1,4 +1,3 @@
-const backendURL = `http://${window.location.hostname}:5000`;
 const convertSelectPlaceholder = "please select a file";
 const darkModeStylesHref = "dark-styles.css";
 let sessionID = "new";
@@ -25,7 +24,7 @@ window.onload = async function() {
     let supportedFormats = [];
     try {
         let response = await fetch(
-            `${backendURL}/supported-formats/`, 
+            `${window.env.BACKEND_URL}/supported-formats/`, 
             {method: "get"}
         );
         supportedFormats = await response.json();
@@ -107,7 +106,7 @@ async function updateToFormats() {
         formats.push(format);
         try {
             let response = await fetch(
-                `${backendURL}/supported-conversions/?format=${format}`, 
+                `${window.env.BACKEND_URL}/supported-conversions/?format=${format}`, 
                 {method: "get"}
             );
             let json = await response.json();
@@ -198,7 +197,7 @@ async function convertFile() {
     for (const format of formats) {
         try {
             let response = await fetch(
-                `${backendURL}/is-valid-conversion/?from_format=${format}&to_format=${toFormat}`, 
+                `${window.env.BACKEND_URL}/is-valid-conversion/?from_format=${format}&to_format=${toFormat}`, 
                 {method: "get"}
             );
             json = await response.json();
@@ -227,7 +226,7 @@ async function convertFile() {
         }
 
         let response = await fetch(
-            `${backendURL}/upload/?session_id=${sessionID}`, 
+            `${window.env.BACKEND_URL}/upload/?session_id=${sessionID}`, 
             {method: "POST", 
             body: formData}
         );
@@ -248,7 +247,7 @@ async function convertFile() {
     // Convert file
     try {
         let response = await fetch(
-            `${backendURL}/convert/?session_id=${sessionID}&to_format=${toFormat}`, 
+            `${window.env.BACKEND_URL}/convert/?session_id=${sessionID}&to_format=${toFormat}`, 
             {method: "PATCH"}
         );
         let json = await response.json();
@@ -267,7 +266,7 @@ async function convertFile() {
     // Download file
     try {
         let response = await fetch(
-            `${backendURL}/download/?session_id=${sessionID}`, 
+            `${window.env.BACKEND_URL}/download/?session_id=${sessionID}`, 
             {method: "GET"}
         );
         if (response.ok) {

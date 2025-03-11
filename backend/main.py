@@ -12,11 +12,7 @@ from typing import List
 import uuid
 import zipfile
 
-# Load environment variables
-load_dotenv()
-
 # Define global variables
-frontend_url = f"http://{os.getenv("HOST_NAME")}"
 media_formats = { # All suported formats for each media type.
     "image": ("BMP", "GIF", "JPG", "PNG", "SVG", "TIF", "WEBP"), 
     "video": ("AVI", "FLV", "MKV", "MOV", "MP4", "WMV"), 
@@ -41,7 +37,7 @@ app = FastAPI()
 # Configure CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[frontend_url],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
