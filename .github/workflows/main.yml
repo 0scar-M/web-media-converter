@@ -41,16 +41,3 @@ jobs:
           context: ./database
           push: true
           tags: ${{ vars.DOCKER_USERNAME }}/${{ github.event.repository.name }}:database
-
-      - name: Install sshpass
-        run: sudo apt-get update && sudo apt-get install -y sshpass
-
-      - name: Deploy app to droplet
-        run: |
-          sshpass -p "${{ secrets.DROPLET_USER_PASSWORD }}" ssh -o StrictHostKeyChecking=no user@170.64.162.244 "
-          cd /home/app &&
-          docker compose down --remove-orphans &&
-          docker images --filter reference=21omccartney/3.8-complex-processes -q | xargs docker rmi -f &&
-          docker compose pull &&
-          docker compose up -d
-          "
