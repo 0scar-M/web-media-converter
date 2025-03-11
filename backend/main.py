@@ -140,6 +140,10 @@ def get_db():
     finally:
         db.close()
 
+@app.route("/")
+def home():
+    return {"message": "This is an API, not a website."}
+
 @app.post("/upload/")
 async def upload_file(session_id: str = Query(...), files: List[UploadFile] = File(...), db: DB = Depends(get_db)):
     """
