@@ -1,0 +1,149 @@
+body {
+    margin: auto;
+    text-align: center;
+    font-family: 'Noto Sans';
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 20px 40px 0 rgba(0,0,0,0.2);
+    padding: 0px 20px;
+    margin-bottom: 100px;
+}
+
+#site-home {
+    display: flex;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+}
+
+#site-home > h1 {
+    display: inline;
+}
+
+#site-home > img {
+    display: block;
+    height: 2rem;
+    padding-right: 10px;
+}
+
+#theme-toggle {
+    width: 1.5em;
+    height: 1.5rem;
+    text-wrap: nowrap;
+    cursor: pointer;
+}
+
+.theme-icon {
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+}
+
+input[type="file"], button {
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+    font-family: inherit;
+    font-size: inherit;
+    background-color: #14abf7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#file-select {
+    padding: 1em;
+    margin-left: 10%;
+    margin-right: 10%;
+    background: #f4f4f4;
+    border: 2px #808080 dashed;
+    border-radius: 10px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+#format-select {
+    padding: 0.1rem;
+    background: #f4f4f4;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submit-convert {
+    margin-top: 2em;
+    background-color: #14abf7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.loader {
+    margin: auto;
+    margin-top: 1em;
+    height: calc(1em - 12px);
+    padding: 6px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 6px solid #ddd;
+    border-right-color: #14abf7;
+    animation: l2 1s infinite linear;
+}
+@keyframes l2 {to{transform: rotate(1turn)}}
+
+#convert-loader {
+    display: none;
+}
+
+#download-again {
+    display: none;
+}
+
+#download-again-link {
+    color: black;
+}
+
+#about {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+table {
+    border-collapse: collapse;
+    margin: auto;
+}
+
+th {
+    border-bottom: 2px solid black;
+    padding: 5px 20px 5px 20px;
+}
+
+td {
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+footer {
+    color: #808080;
+}
+
+@media only screen and (min-width: 900px) {
+    #about, #file-select {
+        margin-left: 30%;
+        margin-right: 30%;
+    }
+
+    #navbar {
+        padding: 0px 30%;
+    }
+}

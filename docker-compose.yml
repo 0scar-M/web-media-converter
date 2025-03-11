@@ -1,0 +1,29 @@
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./backend
+    volumes:
+      - db_volume:/data
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_PATH=/data/database.db
+      - HOST_NAME=localhost
+    depends_on:
+      - database
+  
+  database:
+    build: ./database
+    volumes:
+      - db_volume:/data
+
+volumes:
+  db_volume:

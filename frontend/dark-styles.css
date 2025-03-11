@@ -1,0 +1,36 @@
+body {
+    color: white;
+    background-color: black;
+}
+
+#navbar {
+    color: white;
+    background-color: black;
+    box-shadow: 0 20px 40px 0 rgba(255,255,255,0.2);
+}
+
+h1 {
+    color: white;
+}
+
+#file-select {
+    background: #282828;
+}
+
+#format-select {
+    background: #282828;
+    color: white;
+}
+
+.loader {
+    border: 6px solid #444;
+    border-right-color: #14abf7;
+}
+
+#download-again-link {
+    color: white;
+}
+
+th {
+    border-bottom: 2px solid white;
+}

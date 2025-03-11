@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Media Converter</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link id="dark-styles" rel="stylesheet" href="">
+    <script src="script.js" defer></script>
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f00e7b6fed.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav id="navbar">
+        <a href="" id="site-home">
+            <img src="favicon.ico" alt="Site Icon">
+            <h1>Web Media Converter</h1>
+        </a>
+        <div id="theme-toggle">
+            <i id="theme-icon-light" class="fa-solid fa-sun theme-icon"></i>
+            <i id="theme-icon-dark" class="fa-solid fa-moon theme-icon"></i>
+        </div>
+    </nav>
+    <p>Convert media files to any format here:</p>
+    <main>
+        <form id="convert" action="event.preventDefault();">
+            <div id="file-select">
+                <input type="file" multiple id="file-input" oninput="updateToFormats();">
+                <br>
+                make sure all files are the same media type
+                <br>
+            </div>
+            <br>
+            <div id="convert-options">
+                <label for="format-select">Convert to:</label>
+                <select id="format-select">
+                    <option value="please select a file">please select a file</option>
+                </select>
+                <br>
+            </div>
+            <button id="submit-convert" onclick="event.preventDefault(); convertFile();">
+                Convert & Download <i class="fa-solid fa-download"></i>
+            </button>
+        </form>
+        <p id="user-feedback"></p>
+        <div id="convert-loader" class="loader"></div>
+        <p id="download-again">To download again, click <a id="download-again-link">here</a></p>
+
+        <br>
+        <p>Note that large files (like videos) can take several minutes to convert and download.</p>
+        <br>
+
+        <section id="about">
+            <h2>About:</h2>
+            <p>
+                Web Media Converter is an online tool for file conversion of media files like image, video or audio files into other formats of the same media type (eg. JPG to PNG).
+            </p>
+
+            <br>
+            <h3>Supported Formats:</h3>
+            <table id="supported-formats-table">
+                <tr>
+                    <th>Image</th>
+                    <th>Video</th>
+                    <th>Audio</th>
+                </tr>
+                <tr id="supported-formats-placeholder">
+                    <td></td>
+                    <td>loading...</td>
+                    <td></td>
+                </tr>
+            </table>
+
+            <br>
+            <h3>Unsupported Conversions:</h3>
+            <table>
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                </tr>
+                <tr>
+                    <td>Any image format</td>
+                    <td>SVG</td>
+                </tr>
+                <tr>
+                    <td>Any image format</td>
+                    <td>TIF</td>
+                </tr>
+                <tr>
+                    <td>FLV</td>
+                    <td>MKV</td>
+                </tr>
+            </table>
+        </section>
+
+        <br><br><br>
+        <footer>
+            <p>© Oscar McCartney 2024</p>
+        </footer>
+        <br>
+    </main>
+</body>
+</html>

@@ -1,0 +1,214 @@
+{
+	"info": {
+		"_postman_id": "61db5ebd-9f0a-4163-b67f-475237969ece",
+		"name": "Web Media Converter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33349578"
+	},
+	"item": [
+		{
+			"name": "Upload File",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"session_id\", jsonData.session_id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/Zbook User/Desktop/Python Projects/DIT/Assesments/3.8-complex-processes/3.8-complex-processes/testing/test-files/image/JPG-test.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api_url}}upload/?session_id=new",
+					"host": [
+						"{{api_url}}upload"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "session_id",
+							"value": "new"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Convert File",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}convert/?session_id={{session_id}}&to_format=PNG",
+					"host": [
+						"{{api_url}}convert"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						},
+						{
+							"key": "to_format",
+							"value": "PNG"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download File",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}download/?session_id={{session_id}}",
+					"host": [
+						"{{api_url}}download"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "session_id",
+							"value": "{{session_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Supported Formats",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}supported-formats",
+					"host": [
+						"{{api_url}}supported-formats"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Supported Conversions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}supported-conversions/?format=JPEG",
+					"host": [
+						"{{api_url}}supported-conversions"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "JPEG"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Is Valid Conversion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{api_url}}is-valid-conversion/?from_format=JPEG&to_format=SVG",
+					"host": [
+						"{{api_url}}is-valid-conversion"
+					],
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "from_format",
+							"value": "JPEG"
+						},
+						{
+							"key": "to_format",
+							"value": "SVG"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "session_id",
+			"value": ""
+		},
+		{
+			"key": "api_url",
+			"value": ""
+		}
+	]
+}
