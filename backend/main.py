@@ -140,7 +140,7 @@ def get_db():
     finally:
         db.close()
 
-@app.route("/")
+@app.get("/")
 def home():
     return {"message": "This is an API, not a website."}
 
